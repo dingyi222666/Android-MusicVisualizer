@@ -1,4 +1,4 @@
-###What is this?
+## What is this?
 This is a simple android music visualizer.
 
 ## What types of visualizer can be supported?
