@@ -74,7 +74,7 @@ public class CircleDrawable extends BaseDrawable {
                     cx, cy, cr + dp2px(3), i * getDataBean().getCircleAngle()+270, circlePointF);
 
 
-            float des = (float) getData()[1+i];
+            float des = (float) getData()[getDataBean().getSkipStartArrayIndex()+i];
 
 
             MathUtil.getPoint(

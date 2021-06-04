@@ -50,15 +50,8 @@ public class VisualizerOpenGLView extends BaseOpenGLView {
         drawable = new CircleDrawable(getContext());
         animator = new MyDataAnimator();
         bean = new VisualizerDataBean();
-        helper = new VisualizerHelper(0,bean);
-        paint=new Paint();
 
-        helper.setListener(new VisualizerHelper.Listener() {
-            @Override
-            public void onFftDataCapture(double[] fft) {
-                animator.addData(fft);
-            }
-        });
+        paint=new Paint();
 
 
         animator.setAnimationListener(new MyDataAnimator.AnimationListener() {
@@ -93,7 +86,21 @@ public class VisualizerOpenGLView extends BaseOpenGLView {
         calcFps();
     }
 
+    public boolean isStarted() {
+        return isStarted;
+    }
+
     public void start() {
+
+        helper = new VisualizerHelper(0,bean);
+        helper.setListener(new VisualizerHelper.Listener() {
+            @Override
+            public void onFftDataCapture(double[] fft) {
+                animator.addData(fft);
+            }
+        });
+
+
 
         if (drawable.getDataBean() == null) {
             animator.setDataBean(bean);

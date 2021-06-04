@@ -8,9 +8,9 @@ public class FftFilter extends BaseFilter {
 
     private double dbValue = 75;
 
-    private double smailDbSize = 25;
+    private double smailDbSize = 10;
 
-    private double minDbValue = 15;
+    private double minDbValue = 18;
 
     public FftFilter(VisualizerDataBean bean) {
         super(bean);

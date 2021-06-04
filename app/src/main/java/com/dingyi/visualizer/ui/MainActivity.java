@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.dingyi.visualizer.R;
+import com.dingyi.visualizer.util.LogUtil;
 import com.dingyi.visualizer.view.VisualizerOpenGLView;
 import com.dingyi.visualizer.bean.VisualizerDataBean;
 
+import android.os.SystemClock;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (view != null && checkPermissions()) {
            startVisualizer();
+
         }
 
     }
@@ -42,17 +46,18 @@ public class MainActivity extends AppCompatActivity {
     private void startVisualizer() {
         VisualizerDataBean bean = view.getData();
         bean.setCircleRadius(260);
-        bean.setMaxFps(55);
+        bean.setMaxFps(50);
         bean.setSkipArrayIndex(1);
-        bean.setCircleAngle(3);
-        bean.setCircleLineCount(360 / 3);
+        bean.setCircleAngle(4);
+        bean.setCircleLineCount(360 / 4);
         bean.setShowFps(true);
-        bean.setShowCirclePoint(false);
+        bean.setShowCirclePoint(true);
         bean.setSmoothMode(VisualizerDataBean.SmoothMode.Linear3);
         bean.setLineMargin(1);
+        bean.setSkipStartArrayIndex(16);
         bean.setLineWidth(getWindowManager().getDefaultDisplay().getWidth()/128);
         bean.getColorData()
-                .setCirclePaintWidth(6);
+                .setCirclePaintWidth(8);
 
         //view.setDrawable(new LineDrawable(this));
 
@@ -69,19 +74,20 @@ public class MainActivity extends AppCompatActivity {
             List<String> requestPermissions=new ArrayList<>();
             int flag=0;
 
-
             for (String permission:permissions) {
                 flag=flag|checkCallingOrSelfPermission(permission);
-                if (flag==1) {
+
+                if (flag!=0) {
                     requestPermissions.add(permission);
                 }
             }
 
-            if (flag==1) {
+            if (flag==-1) {
                 requestPermissions(requestPermissions.toArray(new String[requestPermissions.size()]),114514);
             }
 
-            return flag==1;
+
+            return flag==0;
 
         } catch (PackageManager.NameNotFoundException ignored) {
 
@@ -97,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (flag!=0) {
             Toast.makeText(this, "有权限不同意，1000ms后退出", Toast.LENGTH_SHORT).show();
+            view.postDelayed(this::finish, SystemClock.uptimeMillis()+1000);
         }else {
             startVisualizer();
         }
@@ -106,8 +113,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
        super.onDestroy();
-       view.stop();
-       view.release();
+
+       if (view.isStarted()) {
+          view.stop();
+          view.release();
+       }
     }
     
     

@@ -12,6 +12,8 @@ public class VisualizerDataBean {
     private boolean showFps=false;
 
 
+    private int skipStartArrayIndex=8;
+
     private float lineMargin=24;
 
     private float lineWidth;
@@ -43,6 +45,14 @@ public class VisualizerDataBean {
 
     public void setLineMargin(float lineMargin) {
         this.lineMargin = lineMargin;
+    }
+
+    public int getSkipStartArrayIndex() {
+        return skipStartArrayIndex;
+    }
+
+    public void setSkipStartArrayIndex(int skipStartArrayIndex) {
+        this.skipStartArrayIndex = skipStartArrayIndex;
     }
 
 
