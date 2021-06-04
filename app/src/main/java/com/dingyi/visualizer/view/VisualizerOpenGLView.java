@@ -27,7 +27,6 @@ public class VisualizerOpenGLView extends BaseOpenGLView {
 
     private VisualizerHelper helper;
 
-
     private BaseDrawable drawable;
 
     private MyDataAnimator animator;
@@ -82,10 +81,11 @@ public class VisualizerOpenGLView extends BaseOpenGLView {
     }
 
     @Override
-    protected void onMyGLDraw(Canvas canvas) {
+    protected void onMyDraw(Canvas canvas) {
         if (isStarted&&drawable.getData()!=null&&drawable.getData().length>0) {
             drawable.onDraw(canvas);
             if (bean.isShowFps()){
+                //这里拼接会造成大量StringBuilder创建，我这懒得优化
                 canvas.drawText(fps+" fps",100,200,paint);
             }
             System.gc();
