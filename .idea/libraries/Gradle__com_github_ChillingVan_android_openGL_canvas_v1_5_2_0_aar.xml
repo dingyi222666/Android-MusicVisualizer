@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.ChillingVan:android-openGL-canvas:v1.5.2.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aa27a4f725682bbe82dc80e8e5900b98/jetified-android-openGL-canvas-v1.5.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aa27a4f725682bbe82dc80e8e5900b98/jetified-android-openGL-canvas-v1.5.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aa27a4f725682bbe82dc80e8e5900b98/jetified-android-openGL-canvas-v1.5.2.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ace3fb2f518eab944ccdbdc95ca1514/jetified-android-openGL-canvas-v1.5.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ace3fb2f518eab944ccdbdc95ca1514/jetified-android-openGL-canvas-v1.5.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ace3fb2f518eab944ccdbdc95ca1514/jetified-android-openGL-canvas-v1.5.2.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ChillingVan/android-openGL-canvas/v1.5.2.0/8aee5dc83efa4227f96e0bd7a2fd19f33ca14c31/android-openGL-canvas-v1.5.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.ChillingVan/android-openGL-canvas/v1.5.2.0/251bd84a9c0206b97ae83a7ac216e3747d98c38a/android-openGL-canvas-v1.5.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
