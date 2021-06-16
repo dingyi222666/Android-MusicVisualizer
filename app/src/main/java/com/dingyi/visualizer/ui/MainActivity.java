@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.dingyi.visualizer.R;
+import com.dingyi.visualizer.drawable.LineDrawable;
 import com.dingyi.visualizer.util.LogUtil;
 import com.dingyi.visualizer.view.VisualizerOpenGLView;
 import com.dingyi.visualizer.bean.VisualizerDataBean;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private void startVisualizer() {
         VisualizerDataBean bean = view.getData();
         bean.setCircleRadius(260);
-        bean.setMaxFps(50);
+        bean.setMaxFps(45);
         bean.setSkipArrayIndex(1);
         bean.setCircleAngle(4);
         bean.setCircleLineCount(360 / 4);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         bean.setSmoothMode(VisualizerDataBean.SmoothMode.Linear3);
         bean.setLineMargin(1);
         bean.setSkipStartArrayIndex(16);
-        bean.setLineWidth(getWindowManager().getDefaultDisplay().getWidth()/128);
+        bean.setLineWidth(getWindowManager().getDefaultDisplay().getWidth()/80);
         bean.getColorData()
                 .setCirclePaintWidth(8);
 

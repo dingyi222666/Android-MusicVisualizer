@@ -8,16 +8,14 @@ public class FftFilter extends BaseFilter {
 
     private double dbValue = 75;
 
-    private double smailDbSize = 10;
+    private double smailDbSize = 15;
 
-    private double minDbValue = 18;
+    private double minDbValue = 25;
 
     public FftFilter(VisualizerDataBean bean) {
         super(bean);
 
     }
-
-
 
 
     @Override
@@ -58,54 +56,38 @@ public class FftFilter extends BaseFilter {
         }
 
 
+        double[] tmp = new double[12];
 
-        for (int i=1;i<3;i++) {
-            //平滑算法
-            switch (dataBean.getSmoothMode()) {
-                case Linear3:
-                    newData = MathUtil.linearSmooth3(newData, newData.length);
-                    break;
-                case Linear5:
-                    newData = MathUtil.linearSmooth5(newData, newData.length);
-                    break;
-                case Linear7:
-                    newData = MathUtil.linearSmooth5(newData, newData.length);
-                    break;
-                default:
+        for (int i = 0; i < 12; i++) {
+            if (i < 6) {
+                tmp[i] = newData[i];
+            } else {
+                tmp[i] = newData[newData.length - i - 1];
             }
         }
 
-        double[] tmp=new double[12];
 
-        for (int i=0;i<12;i++) {
-            if (i<6) {
-                tmp[i]=newData[i];
-            }else {
-                tmp[i]=newData[newData.length-i-1];
+        for (int i = 0; i < 12; i++) {
+            if (i < 6) {
+                newData[i] = tmp[i];
+            } else {
+                newData[newData.length - i - 1] = tmp[i];
             }
         }
 
-        switch (dataBean.getSmoothMode()){
+
+        switch (dataBean.getSmoothMode()) {
             case Linear3:
-                tmp=MathUtil.linearSmooth3(tmp, tmp.length);
+                for (int i=1;i<3;i++){newData = MathUtil.linearSmooth3(newData, newData.length);}
                 break;
             case Linear5:
-               tmp= MathUtil.linearSmooth5(tmp, tmp.length);
+                newData = MathUtil.linearSmooth5(newData, newData.length);
                 break;
             case Linear7:
-               tmp= MathUtil.linearSmooth7(tmp, tmp.length);
+                newData = MathUtil.linearSmooth7(newData, newData.length);
                 break;
             default:
         }
-
-        for (int i=0;i<12;i++) {
-            if (i<6) {
-                newData[i]=tmp[i];
-            }else {
-               newData[newData.length-i-1]= tmp[i];
-            }
-        }
-
 
 
         System.arraycopy(newData, 0, data, 0, newData.length);
