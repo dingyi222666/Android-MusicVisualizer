@@ -6,7 +6,7 @@
 	android:layout_height="match_parent"
 	android:background="#FFFFFFFF"
 	android:orientation="vertical">
-    <com.dingyi.visualizer.view.VisualizerOpenGLView
+    <io.github.dingyi222666.visualizer_app.view.VisualizerView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:id="@+id/baseView"

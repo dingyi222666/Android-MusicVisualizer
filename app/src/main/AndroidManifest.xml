@@ -14,10 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
         android:resizeableActivity="true">
 
         <activity
-            android:name="com.dingyi.visualizer.ui.MainActivity"
+            android:name="io.github.dingyi222666.visualizer_app.ui.MainActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true"
             android:label="@string/app_name">
 
             <intent-filter>
