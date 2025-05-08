@@ -29,7 +29,7 @@ class AudioVisualizer(private val audioSessionId: Int) {
      */
     private fun setupVisualizer() {
         visualizer = Visualizer(audioSessionId).apply {
-            setScalingMode(Visualizer.SCALING_MODE_NORMALIZED)
+            scalingMode = Visualizer.SCALING_MODE_NORMALIZED
             captureSize = Visualizer.getCaptureSizeRange()[1]
         }
     }

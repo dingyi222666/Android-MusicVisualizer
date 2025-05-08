@@ -18,7 +18,7 @@ class SavitzkyGolayProcessor(
         WINDOW_9   // 9-point window
     }
     
-    private var windowSize: WindowSize = WindowSize.WINDOW_9
+    private var windowSize: WindowSize = WindowSize.WINDOW_7
     
     /**
      * Set the window size for the filter
@@ -45,58 +45,23 @@ class SavitzkyGolayProcessor(
         }
     }
     
-    /**
-     * 反转边缘并替换：
-     * 1. 取出开头1/5部分并反转
-     * 2. 取出中间部分
-     * 3. 用反转后的开头替换尾部
-     * 4. 返回中间+新尾部组合的数据
-     */
-    private fun reverseAndReplaceEdges(data: DoubleArray): DoubleArray {
-        val length = data.size
-        if (length < 2) {
-            return data // 如果数组长度小于2，无法进行替换，直接返回原数据
-        }
-        
-        val edgeLength = length / 16 // 边缘长度为1/5
-        if (edgeLength == 0) {
-            return data // 如果1/5长度为0，也无法替换，直接返回原数据
-        }
-        
-        // 创建结果数组（大小是中间+尾部）
-        val resultSize = length - edgeLength
-        val result =  DoubleArray(resultSize)
-        
-        // 复制中间部分到结果数组
-        for (i in edgeLength until length - edgeLength) {
-            result[i - edgeLength] = data[i]
-        }
-        
-        // 反转开头部分并作为新尾部
-        for (i in 0 until edgeLength) {
-            result[length - edgeLength - edgeLength + i] = data[edgeLength - 1 - i]
-        }
-        
-        return result
-    }
+
     
     /**
      * 处理FFT数据：先进行边缘反转替换，然后应用滤波器
      */
     override fun processData(data: DoubleArray): DoubleArray {
         try {
-            // 反转边缘并替换
-            val processedData = reverseAndReplaceEdges(data)
-            
+
             // 应用滤波器
             val result = when (windowSize) {
-                WindowSize.WINDOW_5 -> processWindow5(processedData)
-                WindowSize.WINDOW_7 -> processWindow7(processedData)
-                WindowSize.WINDOW_9 -> processWindow9(processedData)
+                WindowSize.WINDOW_5 -> processWindow5(data)
+                WindowSize.WINDOW_7 -> processWindow7(data)
+                WindowSize.WINDOW_9 -> processWindow9(data)
             }
             
             // 回收临时数组
-            doubleArrayPool.recycle(processedData)
+            doubleArrayPool.recycle(data)
             
             return result
         } catch (e: Exception) {

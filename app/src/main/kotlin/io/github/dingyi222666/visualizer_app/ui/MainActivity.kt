@@ -47,13 +47,13 @@ class MainActivity : AppCompatActivity() {
             showFps = true
             
             // Data settings
-            dataStartIndex = 16
+            dataStartIndex = 0
             
             // Circle visualization settings
             circle.apply {
                 radius = 360f
-                angle = 2f
-                lineCount = 360f / 2f
+                angle = 4f
+                lineCount = 360f / 4f
                 showPoints = true
             }
             
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             
             // Color settings
             colors.apply {
-                circleLineWidth = 8f
+                circleLineWidth = 9.3f
             }
         }
 

@@ -8,7 +8,7 @@ import io.github.dingyi222666.visualizer_app.utils.DoubleArrayPool
  * A processor that reduces noise in FFT data
  */
 class NoiseReductionProcessor(
-    private val minDbValue: Double = 25.0,
+    private val minDbValue: Double = 2.0,
     private val visualizerData: VisualizerData = VisualizerData(),
     private val doubleArrayPool: DoubleArrayPool = DoubleArrayPool.instance
 ) : DataProcessor {

@@ -13,7 +13,7 @@ data class VisualizerConfig(
     var line: LineConfig = LineConfig(),
     
     // Data settings
-    var dataStartIndex: Int = 8, // Renamed from skipStartArrayIndex for clarity
+    var dataStartIndex: Int = 2, // Renamed from skipStartArrayIndex for clarity
     
     // Color configuration
     var colors: ColorConfig = ColorConfig()
